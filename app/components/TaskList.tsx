@@ -11,7 +11,7 @@ const getTasks =async ()=>{
         return(
             <div>
                 {tasks.map((task:any)=>(
-                    <h1>{task.title}</h1>
+                    <h1 key={task.id}>{task.title}</h1>
                 ))}
                 
             </div>
