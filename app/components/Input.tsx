@@ -6,6 +6,7 @@ import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { Dayjs } from 'dayjs';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { Box, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 
 const Input = () => {
     const [todoTitle,setTodoTitle]=useState("")
@@ -24,14 +25,14 @@ const Input = () => {
             return;
         }
         try{
-            const apiUrl="api/tasks/create"
+        const apiUrl="api/tasks/create"
         const reqMethod="POST";
         const requestData={
             method:reqMethod,
             headers:{
                 "Content-Type": "application/json",
             },
-            body:JSON.stringify({todoTitle,todoDesc,dueDate})
+            body:JSON.stringify({todoTitle,todoDesc,dueDate,priority})
         }
         const response=await fetch(apiUrl,requestData)
 
@@ -52,6 +53,9 @@ const Input = () => {
         
         
     }
+    const handleChange = (event: SelectChangeEvent) => {
+        setPriority(event.target.value as string);
+      };
 
   return (
     <div>
@@ -63,6 +67,24 @@ const Input = () => {
                 <DatePicker value={dueDate} onChange={(newValue)=>setDueDate(newValue)}/>
             </DemoContainer>
             </LocalizationProvider>
+            
+
+            <Box sx={{ minWidth: 120 }}>
+                <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Priority</InputLabel>
+                    <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={priority}
+                    label="Priority"
+                    onChange={handleChange}
+                    >
+                        <MenuItem value={"Low"}>Low</MenuItem>
+                        <MenuItem value={"Medium"}>Medium</MenuItem>
+                        <MenuItem value={"High"}>High</MenuItem>
+                    </Select>
+                </FormControl>
+            </Box>
             
         <button type='submit'>Add</button>
 
