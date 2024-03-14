@@ -11,25 +11,7 @@ import Task from "./Task";
     export default  function Tasks(id:string) {
       const [tasks,setTasks]=useState([])
 
-    //   useEffect(()=>{
-    //     const fetchTasks=async()=>{
-    //       try{
-    //         const response=await fetch(`api/tasks`,{
-    //           next: { revalidate: 1 },
-    //         })
-    //         if(!response.ok){
-    //           throw new Error('failed to fetch items')
-    //         }
-    //         const data=await response.json();
-    //         setTasks(data)
-    //       }catch(error:any){
-    //         console.error(`Error fetching data`)
-    //         toast.error("error fetching data this time")
-    //       }
-    //     }
-    //     fetchTasks()
-
-    //   },[])
+   
 
     useEffect(() => {
       const fetchTasks = () => {
@@ -52,21 +34,18 @@ import Task from "./Task";
       };
   
       fetchTasks();
+      console.log(tasks)
     }, [id]);
+
+    
         
         
 
         return(
             <div>
-                {/* {tasks.map((task:any)=>(
-                    <div className="mb-6">
-                        <h1 key={task.id}>{task.title}<span><p>{task.description}</p></span></h1><p>{task.priority}</p>
-                        <p>{task.dueDate}</p>
-                    </div>
-                    
-                ))} */}
+               
                 {tasks.map((task:any)=>(
-                  <Task title={task.title} taskId={task.id} description={""} dueDate={""} priority={""} createdAt={""}/>
+                  <Task title={task.title} id={task.id} description={task.description} completed={task.completed?"Completed":"not completed"} dueDate={task.dueDate} priority={task.priority} createdAt={task.createdAt}/>
                 ))
 
                 }
