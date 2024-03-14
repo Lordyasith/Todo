@@ -66,16 +66,24 @@ const  Task = ({title,id,description,completed,dueDate,priority,createdAt}:TaskI
     }
   }
   return (
-    <div className='mb-10'>
-      <h1>{title}</h1>
-      <p>{description}</p>
-      <p>{completed}</p>
-      <p>{dueDate}</p>
-      <p>{priority}</p>
-      <button onClick={deleteTask} type='submit'>Delete</button>
-      <button onClick={updateTask} type="submit">Completed</button>
+    <div className='mb-10 p-4 border rounded-md shadow-sm'>
+      <h1 className='text-xl font-bold mb-2'>{title}</h1>
+      <p className='text-gray-700 mb-2'>{description}</p>
+      <p className={`text-sm ${completed ? 'text-green-600' : 'text-red-600'} font-semibold mb-2`}>
+        {completed ? 'Completed' : 'Pending'}
+      </p>
+      <p className='text-gray-600 mb-2'>Due Date: {dueDate}</p>
+      <p className='text-gray-600 mb-2'>Priority: {priority}</p>
+      <button onClick={deleteTask} className='bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mr-2'>
+        Delete
+      </button>
+      {!completed && (
+        <button onClick={updateTask} className='bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded'>
+          Complete
+        </button>
+      )}
     </div>
-  )
+  );
 }
 
 export default Task

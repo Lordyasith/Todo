@@ -45,7 +45,7 @@ import Task from "./Task";
             <div>
                
                 {tasks.map((task:any)=>(
-                  <Task title={task.title} id={task.id} description={task.description} completed={task.completed?"Completed":"not completed"} dueDate={task.dueDate} priority={task.priority} createdAt={task.createdAt}/>
+                  <Task key={task.id} title={task.title} id={task.id} description={task.description} completed={task.completed?"Completed":"not completed"} dueDate={task.dueDate} priority={task.priority} createdAt={task.createdAt}/>
                 ))
 
                 }
