@@ -8,7 +8,7 @@ import Task from "./Task";
 
 
 
-    export default  function Tasks(id:string) {
+    export default  function Tasks(id:any) {
       const [tasks,setTasks]=useState([])
 
    
