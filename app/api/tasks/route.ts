@@ -6,7 +6,7 @@ export async function GET(){
     try{
         const todos=await prisma.task.findMany({
             orderBy:{
-                createdAt:"desc",
+                priority:"asc",
             }
 
         });

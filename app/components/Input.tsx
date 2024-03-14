@@ -139,7 +139,7 @@ const Input = () => {
             }
 
             setTodoTitle("");
-            toast.success("Todo created");
+            toast.success("Task created");
             window.location.reload();
 
         } catch (error) {
@@ -174,9 +174,9 @@ const Input = () => {
                             onChange={handleChange}
                             className="p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500"
                         >
-                            <MenuItem value={"Low"}>Low</MenuItem>
-                            <MenuItem value={"Medium"}>Medium</MenuItem>
-                            <MenuItem value={"High"}>High</MenuItem>
+                            <MenuItem value={"1"}>Low</MenuItem>
+                            <MenuItem value={"2"}>Medium</MenuItem>
+                            <MenuItem value={"3"}>High</MenuItem>
                         </Select>
                     </FormControl>
                 </Box>
